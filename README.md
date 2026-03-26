@@ -2,8 +2,6 @@
 
 > Una aplicación web profesional de e-commerce desarrollada con **React 19**, **TypeScript**, y **Vite**, que consume la API pública [FakeStore API](https://fakestoreapi.com) para mostrar un catálogo de productos interactivo, filtrable y completamente funcional.
 
-**Versión:** 1.0.0 | **Estado:** ✅ Completo y documentado | **Tests:** 25/25 pasando
-
 ---
 
 ## 📋 Tabla de Contenidos
@@ -64,6 +62,9 @@
 ✅ **Diseño Responsive Mobile-First**
 - Optimizado para mobile, tablet y desktop
 - Breakpoints: 480px, 768px, 1200px
+
+✅ **Despliegue Vercel**
+- [E-Store](https://e-store-atp.vercel.app/)
 
 ✅ **Badge Top Rated**
 - Muestra "⭐ Top Rated" para productos con rating > 4.0
@@ -852,11 +853,11 @@ if (error) {
 - [x] Hooks personalizados
 - [x] Estados y filtros
 - [x] Tests unitarios (25/25)
-- [x] Documentación JSDoc
 - [x] Manejo de errores
 - [x] Responsive design
 - [x] Accesibilidad
 - [x] Build production
+- [x] Despliegue en Vercel
 - [x] Documentación completa
 
 ---
@@ -872,18 +873,6 @@ if (error) {
 
 ---
 
-## 📄 Archivos de Documentación
-
-Este proyecto includes comprehensive documentation:
-
-- **README.md** - Este archivo (documentación completa)
-- **DOCUMENTATION.md** - Referencia de módulos y estructura (también incluida aquí)
-- **COMPONENTS_GUIDE.md** - Guía detallada de componentes (también incluida aquí)
-- **API_REFERENCE.md** - Referencia de API y tipos (también incluida aquí)
-- **ARCHITECTURE.md** - Decisiones arquitectónicas (también incluida aquí)
-
-**Nota:** Toda la documentación está consolidada en este README.md para facilidad de acceso.
-
 ---
 
 **Última actualización:** 25 de Marzo 2026  
@@ -891,113 +880,3 @@ Este proyecto includes comprehensive documentation:
 **Estado:** ✅ Completo y documentado  
 **Tests:** 25/25 pasando  
 **Build:** ✓ Production ready
-
-## 🚀 Despliegue
-
-### Vercel
-```bash
-# Conexión automática desde GitHub
-# Los deploys son automáticos al hacer push
-```
-
-### Netlify
-```bash
-npm run build
-npx netlify-cli deploy --prod --dir=dist
-```
-
-## 🔧 Decisiones Técnicas
-
-| Decisión     | Razón                           |
-|--------------|---------------------------------|
-| Jest + RTL   | Mejor testing de comportamiento |
-| Hooks        | Menos boilerplate que Redux     |
-| CSS separado | Mejor mantenibilidad            |
-| Axios        | Timeout y cancelación built-in  |
-| Skeletons    | Mejor UX que spinners           |
-
-## 🤖 Integración de IA
-
-### Descripción Técnica
-
-La IA es **completamente simulada** usando patrones inteligentes:
-
-#### Componentes:
-1. **Mapeo por Categoría**: Templates contextualizados
-2. **Análisis de Rating**: Determina urgencia de recomendación
-3. **Análisis de Precio**: Clasifica como económico/medio/premium
-4. **Generación de Sugerencias**: 4 sugerencias contextuales
-5. **Resumen Ejecutivo**: Síntesis profesional
-
-#### Características:
-- ✅ Delay simulado (1.5s)
-- ✅ Respuestas determinísticas pero contextuales
-- ✅ Interfaz visual distintiva
-
-## 📱 Responsive Design
-
-| Device  | Width      | Layouts     |
-|---------|------------|-------------|
-| Mobile  | <480px     | 1 columna   |
-| Tablet  | 480-768px  | 2 columnas  |
-| Laptop  | 768-1200px | 3 columnas  |
-| Desktop | >1200px    | 4+ columnas |
-
-**Filosofía**: Mobile-First Approach
-
-## 📊 Rendimiento
-
-### Optimizaciones
-- ✅ Lazy loading de imágenes
-- ✅ Code splitting automático (Vite)
-- ✅ Skeletons reducen CLS
-- ✅ Memoization en filters
-
-### Métricas Esperadas
-- **LCP**: ~2.5s
-- **FID**: ~50ms
-- **CLS**: <0.1
-
-## 🔐 Seguridad
-
-- ✅ Input sanitization en búsquedas
-- ✅ Fallback para URLs de imagen
-- ✅ Error boundaries recomendado
-- ✅ CORS habilitado en API
-
-## 📚 Recursos
-
-- [React Documentation](https://react.dev)
-- [TypeScript Handbook](https://www.typescriptlang.org)
-- [Vite Guide](https://vitejs.dev)
-- [FakeStore API](https://fakestoreapi.com)
-- [Jest Documentation](https://jestjs.io)
-- [React Testing Library](https://testing-library.com)
-
-## 🐛 Troubleshooting
-
-**npm run dev falla:**
-```bash
-rm -rf node_modules package-lock.json
-npm install && npm run dev
-```
-
-**Tests fallan:**
-```bash
-npm test -- --clearCache
-```
-
-**Las imágenes no cargan en desarrollo:**
-- Es normal con FakeStore API
-- El fallback SVG se muestra automáticamente
-- Funciona en producción
-
-## 📄 Licencia
-
-MIT - Ver LICENSE para más detalles.
-
----
-
-**Versión:** 1.0.0  
-**Última actualización:** 2024  
-**Estado:** ✅ Production Ready
