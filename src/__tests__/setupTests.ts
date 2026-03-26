@@ -20,4 +20,8 @@ Object.defineProperty(window, 'matchMedia', {
 /**
  * Suppress fetch API warnings in tests
  */
-global.fetch = jest.fn();
+// In jsdom/testing environment, window is available
+Object.defineProperty(window, 'fetch', {
+  value: jest.fn(),
+  writable: true,
+});

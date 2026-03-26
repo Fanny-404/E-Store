@@ -3,10 +3,16 @@ import { Product } from '../types/product';
 
 const API_BASE_URL = 'https://fakestoreapi.com';
 
-const apiClient = axios.create({
+import type { AxiosInstance } from 'axios';
+
+let apiClient: AxiosInstance = axios.create({
   baseURL: API_BASE_URL,
   timeout: 10000,
 });
+
+export const setApiClient = (client: AxiosInstance) => {
+  apiClient = client;
+};
 
 export const apiService = {
   /**

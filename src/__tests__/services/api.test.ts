@@ -1,14 +1,10 @@
-import { apiService } from '../../services/api';
-import axios from 'axios';
-
-jest.mock('axios');
+import { apiService, setApiClient } from '../../services/api';
+import type { AxiosInstance } from 'axios';
 
 describe('API Service', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
-
-  const mockedAxios = axios.create() as jest.Mocked<typeof axios>;
 
   describe('getAllProducts', () => {
     it('should fetch all products successfully', async () => {
@@ -23,25 +19,25 @@ describe('API Service', () => {
         },
       ];
 
-      jest.spyOn(axios, 'create').mockReturnValue({
-        ...mockedAxios,
+      const mockedClient = {
         get: jest.fn().mockResolvedValue({ data: mockProducts }),
-      } as any);
+      } as unknown as AxiosInstance;
 
-      // Re-import to get fresh client
-      jest.resetModules();
-      const { apiService: freshService } = await import('../../services/api');
+      setApiClient(mockedClient);
 
-      expect(freshService).toBeDefined();
+      const result = await apiService.getAllProducts();
+
+      expect(result).toEqual(mockProducts);
     });
 
     it('should throw error on API failure', async () => {
-      jest.spyOn(axios, 'create').mockReturnValue({
-        ...mockedAxios,
+      const mockedClient = {
         get: jest.fn().mockRejectedValue(new Error('Network error')),
-      } as any);
+      } as unknown as AxiosInstance;
 
-      expect(apiService.getAllProducts()).rejects.toThrow();
+      setApiClient(mockedClient);
+
+      await expect(apiService.getAllProducts()).rejects.toThrow('Failed to fetch products. Please try again later.');
     });
   });
 
@@ -49,12 +45,15 @@ describe('API Service', () => {
     it('should fetch categories successfully', async () => {
       const mockCategories = ['electronics', 'jewelery'];
 
-      jest.spyOn(axios, 'create').mockReturnValue({
-        ...mockedAxios,
+      const mockedClient = {
         get: jest.fn().mockResolvedValue({ data: mockCategories }),
-      } as any);
+      } as unknown as AxiosInstance;
 
-      expect(apiService.getCategories()).toBeDefined();
+      setApiClient(mockedClient);
+
+      const result = await apiService.getCategories();
+
+      expect(result).toEqual(mockCategories);
     });
   });
 });
